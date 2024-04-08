@@ -9,6 +9,7 @@ public class Pizza {
     }
 
     public String toString(){
+
         return (navn + ": " + pris);
     }
 }

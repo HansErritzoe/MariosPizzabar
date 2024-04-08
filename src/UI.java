@@ -1,9 +1,10 @@
+import java.io.*;
 import java.util.*;
 
 public class UI {
 
     //metode for at printe hovedmenuen og lade brugeren foretage et valg
-    public static void hovedMenu() {
+    public static void hovedMenu() throws FileNotFoundException {
         System.out.println("========================================");
         System.out.println("               Hovedmenu                ");
         System.out.println("========================================");
@@ -32,6 +33,7 @@ public class UI {
         switch(valg) {
             case 1:
                 System.out.println("case 1");
+                MenuKort.printPizzaListe();
                 break;
             case 2:
                 System.out.println("case 2");
