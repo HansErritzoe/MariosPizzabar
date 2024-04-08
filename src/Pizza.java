@@ -1,16 +1,14 @@
 public class Pizza {
 
-    private String name;
-    private double price;
+    private String navn;
+    private double pris;
 
-    public Pizza (String name, double price){
-        this.name=name;
-        this.price=price;
+    public Pizza (String navn, double pris){
+        this.navn=navn;
+        this.pris=pris;
     }
 
     public String toString(){
-        return (name+ ": " +price);
+        return (navn + ": " + pris);
     }
-
-
 }
