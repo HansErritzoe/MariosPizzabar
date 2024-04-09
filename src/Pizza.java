@@ -7,9 +7,11 @@ public class Pizza {
         this.navn=navn;
         this.pris=pris;
     }
-
     public String toString(){
-
         return (navn + ": " + pris);
+    }
+
+    public double getPris(){
+        return this.pris;
     }
 }
