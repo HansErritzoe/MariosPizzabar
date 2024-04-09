@@ -15,9 +15,6 @@ public class FilBehandling {
             throw new RuntimeException(e);
         }
     }
-
-
-
-    }
-
 }
+
+
