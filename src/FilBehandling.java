@@ -17,7 +17,7 @@ public class FilBehandling {
     }
 
     // (Ikke færdig) metode til at returnere ordrer fra ordrer.txt som Ordre[]
-    public static Ordre[] hentOrdrer(){
+    /*public static Ordre[] hentOrdrer(){
         String filNavn = "ordrer.txt";
         try {
             Ordre[] nytArray = new Ordre[tælLinjerIFil(filNavn)];
@@ -25,10 +25,13 @@ public class FilBehandling {
             for(int i = 0; i < nytArray.length;i++){
 
             }
+
         } catch (FileNotFoundException e){
             throw new RuntimeException();
+
         }
-    }
+
+    } */
 
     //tæller hvor mange linjer er i en fil, så vi ved hvor stort et array vi skal lave når vi henter fra fil
     public static int tælLinjerIFil(String filNavn) throws FileNotFoundException {

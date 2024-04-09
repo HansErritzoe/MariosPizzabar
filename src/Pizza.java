@@ -14,4 +14,8 @@ public class Pizza {
     public double getPris(){
         return this.pris;
     }
+
+    public String getNavn(){
+        return this.navn;
+    }
 }
