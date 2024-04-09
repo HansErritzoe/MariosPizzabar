@@ -7,6 +7,10 @@ public class Pizza {
         this.navn=navn;
         this.pris=pris;
     }
+
+    public Pizza(String navn){
+        this.navn = navn;
+    }
     public String toString(){
         return (navn + ": " + pris);
     }

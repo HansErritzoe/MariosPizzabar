@@ -13,7 +13,7 @@ public class Ordre {
     public Ordre (int ordreNr, Pizza[] pizzaArray, String afhTid){
         this.pizzaArray=pizzaArray;
         this.ordreNr=ordreNr;
-        this.totalPris =samletpris();
+        this.totalPris = samletpris(pizzaArray);
         this.afhTid=localDateTimefraKlokkeSlæt(afhTid);
     }
 
@@ -22,15 +22,15 @@ public class Ordre {
     public Ordre(int ordreNr, Pizza[] pizzaArray, LocalDateTime afhTid){
         this.pizzaArray=pizzaArray;
         this.ordreNr=ordreNr;
-        this.totalPris = samletpris();
+        this.totalPris = samletpris(pizzaArray);
         this.afhTid=afhTid;
     }
 
     //metode som returnerer samlet pris for pizzaer i denne ordre.
-    public double samletpris( ){
+    public double samletpris(Pizza[] array){
         double totalPris=0.0;
-        for (int i=0; i<this.pizzaArray.length;i++) {
-            totalPris += pizzaArray[i].getPris();
+        for (Pizza pizza : array) {
+            totalPris += pizza.getPris();
         }
         return totalPris;
     }
