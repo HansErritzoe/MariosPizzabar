@@ -17,6 +17,8 @@ public class UI {
         System.out.println("         tast 5: Marker ordre betalt    ");
         System.out.println("         tast 6: Se omsætning           ");
         System.out.println("         tast 7: Se statestik           ");
+        System.out.println("         tast 8: Luk programmet         ");
+
 
         int valg = 0;
         //try/catch til hvis brugeren taster invalid input så som tekst istedet for tal.
@@ -53,6 +55,8 @@ public class UI {
             case 7:
                 System.out.println("case 7");
                 break;
+            case 8:
+                System.exit(0);
             default: //til hvis brugeren indtaster et tal som ikke er en mulighed
                 System.out.println("Ikke accepteret valg, prøv igen");
                 hovedMenu();
