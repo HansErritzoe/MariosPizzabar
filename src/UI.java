@@ -1,4 +1,5 @@
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class UI {
@@ -83,10 +84,27 @@ public class UI {
             nypizzaarray[N-1]=pizza;
             N++;
 
-        }//end of while tast
+        }//end of while loopen
 
-        //mangler afhentningstid
+        //Nu skal der spørges om afhentnings tidspunkt:
+        System.out.println("Indtast afhentningstidspunkt, i formen : hh mm: ");
+        scan.nextLine();
+        String afhTids= scan.nextLine();
+        LocalDateTime tid =Ordre.localDateTimefraKlokkeSlæt(afhTids);
 
+        //Nu skal der hentes OrdreNr:
+        int ordreNr = FilBehandling.getNewID();
+
+        Ordre nyordre = new Ordre(ordreNr, nypizzaarray, afhTids);
+
+        Ordre[] nyOrdre = new Ordre[Main.ordrer.length+1];
+                for(int i=0; i<Main.ordrer.length;i++){
+                    nyOrdre [i]= Main.ordrer[i];
+                }//end forloopen
+        nyOrdre [Main.ordrer.length]=nyordre;
+        Main.ordrer=nyOrdre;
+
+        FilBehandling.gemOrdre(Main.ordrer);
 
     }//end of tilfoejordre method
 
