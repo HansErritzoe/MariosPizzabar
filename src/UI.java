@@ -32,15 +32,16 @@ public class UI {
         }
 
         //selve switchen til hovedmenuen
-        switch(valg) {
+        switch (valg) {
             case 1:
                 System.out.println("case 1");
                 MenuKort.printPizzaListe();
                 break;
-            case 2:
+            case 2://se nuværende ordrer : de skal sorteres efter afhentningstidspunkt
                 System.out.println("case 2");
                 break;
-            case 3:
+            case 3://tilføj ny ordre
+                tilfoejordre(Main.brugerInput);
                 System.out.println("case 3");
                 break;
             case 4:
@@ -60,6 +61,34 @@ public class UI {
             default: //til hvis brugeren indtaster et tal som ikke er en mulighed
                 System.out.println("Ikke accepteret valg, prøv igen");
                 hovedMenu();
-        }
-    }
-}
+        }//end of switch
+    }//end of hovedmenu
+
+    public static void tilfoejordre(Scanner scan) throws FileNotFoundException{
+        int antalPizzaer = 1;
+        int N=1; // counter der tæller numbers of pizzaer
+        //Pizza [] nypizzaarray= new Pizza[1];
+
+        System.out.println("hvor mange pizzaer vil du indtaste");
+        int NbPizza = scan.nextInt();
+
+        Pizza [] nypizzaarray= new Pizza[NbPizza];
+
+        while (N<=NbPizza) {
+            System.out.println("Indtast pizzanavn: ");
+            String navn = scan.next();
+
+            Pizza pizza = new Pizza(navn); //opretter pizza objekt
+            //antalPizzaer++;
+            nypizzaarray[N-1]=pizza;
+            N++;
+
+        }//end of while tast
+
+        //mangler afhentningstid
+
+
+    }//end of tilfoejordre method
+
+}//end of class
+
