@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Pizza {
-    private Scanner filescan;
+
     private String navn;
     private double pris;
 
