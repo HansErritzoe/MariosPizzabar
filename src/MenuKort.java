@@ -9,6 +9,7 @@ public class MenuKort {
             int count = 0;
             while (filescan.hasNextLine()) {
                 count++;
+                filescan.useLocale(Locale.US);
                 String nextPizza = filescan.nextLine();
                 System.out.println(count + "." + " " + nextPizza + "kr.");
             }

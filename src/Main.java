@@ -11,21 +11,21 @@ public class Main {
     public static final Scanner brugerInput = new Scanner(System.in);
 
     public static void main(String[] args) throws FileNotFoundException {
-        //UI.hovedMenu();
+        UI.hovedMenu();
         //til test af oprettelse af PizzaArray samt Ordre
-        /* Pizza[] pizzaTestArray = new Pizza[3];
-        pizzaTestArray[0] = new Pizza("Vesuvio",20);
-        pizzaTestArray[1] = new Pizza("Kartoffel",20);
-        pizzaTestArray[2] = new Pizza("Quadro-Formaggio",20);
+        Pizza[] pizzaTestArray = new Pizza[3];
+        pizzaTestArray[0] = new Pizza("Vesuvio");
+        pizzaTestArray[1] = new Pizza("Mafia");
+        pizzaTestArray[2] = new Pizza("Bertil");
         Ordre testOrdre = new Ordre(25,pizzaTestArray, "12 45");
 
         //til test af hentOrdrer() samt gemOrdre()
-        System.out.println(testOrdre.toString()); */
-        /* for(Ordre ordre : ordrer){
+        System.out.println(testOrdre.toString());
+         for(Ordre ordre : ordrer){
             System.out.println(ordre.toString());
         }
         FilBehandling.gemOrdre(ordrer);
-        */
+
     }
 
 }
