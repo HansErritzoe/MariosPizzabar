@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class MenuKort {
-
+    public static Ordre[] ordrer = FilBehandling.hentOrdrer();
     public static void printPizzaListe() throws FileNotFoundException {
         File file = new File("src/pizzaListe.txt");
         Scanner filescan = new Scanner(file);
@@ -14,5 +14,6 @@ public class MenuKort {
                 System.out.println(count + "." + " " + nextPizza + "kr."); //tager imod det nummer loopet er noget på samt hele indholdet af den linje
             }                                                              // og printer det derefter ud i følgende format eksempel:
         }                                                                  // count. nextPizzakr.
-    }                                                                      // 1. Vesuvio 57.00kr.
+        UI.hovedMenu();                                                    // 1. Vesuvio 57.00kr.
+    }
 }
