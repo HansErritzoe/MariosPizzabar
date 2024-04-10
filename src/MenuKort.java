@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 public class MenuKort {
-    public static Ordre[] ordrer = FilBehandling.hentOrdrer();
+
     public static void printPizzaListe() throws FileNotFoundException {
         File file = new File("src/pizzaListe.txt");
         Scanner filescan = new Scanner(file);
