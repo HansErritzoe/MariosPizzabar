@@ -2,6 +2,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Scanner;
+import java.lang.Math.*;
 
 public class FilBehandling {
 
@@ -86,6 +87,35 @@ public class FilBehandling {
             throw new FileNotFoundException();
         }
         return linjer;
+    }
+
+    //returnerer den næste ubrugte ordre ID ved at scanne filerne for hvad er max ID brugt so far
+    public static int getNewID(){
+        try {
+            String filNavn = "src/Ordre.txt";
+            String filNavn2 = "src/færdigeOrdre.txt";
+            Scanner ordreScanner = new Scanner(new File(filNavn));
+            Scanner færdigeOrdreScanner = new Scanner(new File(filNavn2));
+            int ordreMax = 0;
+            int færdigeOrdreMax = 0;
+            //scanner Ordre.txt for max ID
+            while(ordreScanner.hasNextLine()){
+                int nyværdi = ordreScanner.nextInt();
+                ordreScanner.nextLine();
+                ordreMax = Math.max(nyværdi,ordreMax);
+            }
+            //scanner færdigeOrdre.txt for max ID
+            while(færdigeOrdreScanner.hasNextLine()){
+                int nyværdi = færdigeOrdreScanner.nextInt();
+                færdigeOrdreScanner.nextLine();
+                færdigeOrdreMax = Math.max(nyværdi,færdigeOrdreMax);
+            }
+            //returnerer max INT+1 for de 2 filer
+            return Math.max(ordreMax,færdigeOrdreMax)+1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 
