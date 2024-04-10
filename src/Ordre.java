@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class Ordre {
+public class Ordre implements Comparable<Ordre>{
     Pizza[] pizzaArray;
     int ordreNr;
     double totalPris;
@@ -15,6 +15,9 @@ public class Ordre {
         this.ordreNr=ordreNr;
         this.totalPris = samletpris(pizzaArray);
         this.afhTid=localDateTimefraKlokkeSlæt(afhTid);
+    }
+    public int compareTo (Ordre ord){
+        return this.afhTid.compareTo((ord.afhTid));
     }
 
     //Constructor som tager imod afhentningstidspunkt som LocalDateTime objekt

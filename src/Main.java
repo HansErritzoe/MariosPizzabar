@@ -20,11 +20,11 @@ public class Main {
         Ordre testOrdre = new Ordre(25,pizzaTestArray, "12 45");
 
         //til test af hentOrdrer() samt gemOrdre()
-        System.out.println(testOrdre.toString());
+        /*System.out.println(testOrdre.toString());
          for(Ordre ordre : ordrer){
             System.out.println(ordre.toString());
         }
-        FilBehandling.gemOrdre(ordrer);
+        FilBehandling.gemOrdre(ordrer);*/
 
     }
 

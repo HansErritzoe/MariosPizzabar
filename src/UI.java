@@ -39,6 +39,7 @@ public class UI {
                 MenuKort.printPizzaListe();
                 break;
             case 2://se nuværende ordrer : de skal sorteres efter afhentningstidspunkt
+                seOrdrer();
                 System.out.println("case 2");
                 break;
             case 3://tilføj ny ordre
@@ -64,6 +65,14 @@ public class UI {
                 hovedMenu();
         }//end of switch
     }//end of hovedmenu
+
+    public static void seOrdrer(){
+        Ordre[] ordrer = FilBehandling.hentOrdrer();
+        Arrays.sort(ordrer);
+        for (Ordre ordre : ordrer){
+            System.out.println(ordre.toString());
+        }
+    }
 
     public static void tilfoejordre(Scanner scan) throws FileNotFoundException{
         int antalPizzaer = 1;
