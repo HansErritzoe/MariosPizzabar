@@ -45,7 +45,7 @@ public class Pizza {
 
             Scanner loopfilescan = new Scanner(fileloop);        //i følgende loop indsætter vi det første element fra pizzaListe.txt -
             for(int i = 0; i <= count-1; i++) {                 //- i pizzaNavn[] array, det betyder at pizza navne fra pizzaListe.txt kommer ind på
-                filescan.useLocale(Locale.US);                  //plads 0 i pizzaNavn[], derefter leder vi efter en double som er prisen og gør det samme
+                loopfilescan.useLocale(Locale.US);                  //plads 0 i pizzaNavn[], derefter leder vi efter en double som er prisen og gør det samme
                 String pizzaScan = loopfilescan.next();         //hvor vi finder pizzaens pris og putter i pizzaPris[] array
                 pizzaNavn[i] = pizzaScan;                       //dette gør vi så antal gange af count som vi har fra det tidligere loop
                 double prisScan = loopfilescan.nextDouble();    //altså antal linjer fra filen pizzaListe.txt
