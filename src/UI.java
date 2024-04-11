@@ -6,19 +6,19 @@ public class UI {
 
     //metode for at printe hovedmenuen og lade brugeren foretage et valg
     public static void hovedMenu() throws FileNotFoundException {
-        System.out.println("========================================");
-        System.out.println("               Hovedmenu                ");
-        System.out.println("========================================");
-        System.out.println("  Indtast et tal for vælge en mulighed  ");
-        System.out.println("========================================");
-        System.out.println("         tast 1: Se Menu-kort           ");
-        System.out.println("         tast 2: Se nuværende ordrer    ");
-        System.out.println("         tast 3: Tilføj ny ordre        ");
-        System.out.println("         tast 4: Slet ordre             ");
-        System.out.println("         tast 5: Marker ordre betalt    ");
-        System.out.println("         tast 6: Se omsætning           ");
-        System.out.println("         tast 7: Se statestik           ");
-        System.out.println("         tast 8: Luk programmet         ");
+        System.out.println("===============================================");
+        System.out.println("                   Hovedmenu                   ");
+        System.out.println("===============================================");
+        System.out.println("      Indtast et tal for vælge en mulighed     ");
+        System.out.println("===============================================");
+        System.out.println("  tast 1: Se Menu-kort                         ");
+        System.out.println("  tast 2: Se nuværende ordrer                  ");
+        System.out.println("  tast 3: Tilføj ny ordre                      ");
+        //System.out.println("  tast 4: Slet ordre                         ");
+        System.out.println("  tast 4: Marker ordre betalt og arkiver den   ");
+        System.out.println("  tast 5: Se omsætning                         ");
+        System.out.println("  tast 6: Se statsitik                         ");
+        System.out.println("  tast 7: Luk programmet                       ");
 
 
         int valg = 0;
@@ -35,30 +35,33 @@ public class UI {
         //selve switchen til hovedmenuen
         switch (valg) {
             case 1:
-                System.out.println("case 1");
+                //System.out.println("case 1");
                 MenuKort.printPizzaListe();
+                hovedMenu();
                 break;
             case 2://se nuværende ordrer : de skal sorteres efter afhentningstidspunkt
                 seOrdrer();
-                System.out.println("case 2");
+                //System.out.println("case 2");
+                hovedMenu();
                 break;
             case 3://tilføj ny ordre
                 tilfoejordre(Main.brugerInput);
-                System.out.println("case 3");
+                //System.out.println("case 3");
+                hovedMenu();
                 break;
-            case 4:
+            case 4: //Marker ordre betalt og arkiver den
                 System.out.println("case 4");
+                hovedMenu();
                 break;
-            case 5:
+            case 5: //se omsætning
                 System.out.println("case 5");
+                hovedMenu();
                 break;
-            case 6:
+            case 6: //se statistik
                 System.out.println("case 6");
+                hovedMenu();
                 break;
             case 7:
-                System.out.println("case 7");
-                break;
-            case 8:
                 System.exit(0);
             default: //til hvis brugeren indtaster et tal som ikke er en mulighed
                 System.out.println("Ikke accepteret valg, prøv igen");

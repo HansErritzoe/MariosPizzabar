@@ -1,8 +1,10 @@
 4 05/04-2023-15:30 175.0 Vesuvio Amerikaner Dennis 
 5 05/03-2023-15:45 183.0 Mafia Toronfo Hawai 
-6 06/03-2023-16:16 179.0 Silvia-Le Blissola Vesuvio Amarikaner 
+6 06/03-2023-16:16 179.0 Silvia Le-Blissola Vesuvio Amarikaner 
 7 04/10-2024-13:45 53.0 Amerikaner 
 8 04/10-2024-13:45 53.0 Amerikaner 
 9 04/10-2024-14:00 0.0 Versuvio 
 10 04/10-2024-15:34 246.0 Carbona Dennis Bertil Victoria 
 11 04/10-2024-11:30 53.0 Amerikaner 
+12 04/11-2024-12:45 126.0 Victoria Dennis 
+13 04/11-2024-11:00 242.0 Cacciatore Carbona Silvia Toronfo 

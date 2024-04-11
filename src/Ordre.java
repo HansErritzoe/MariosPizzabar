@@ -17,8 +17,13 @@ public class Ordre implements Comparable<Ordre>{
         this.afhTid=localDateTimefraKlokkeSlæt(afhTid);
     }
     public int compareTo (Ordre ord){
-        return this.afhTid.compareTo((ord.afhTid));
-    }
+        int comparDato = this.afhTid.toLocalDate().compareTo(ord.afhTid.toLocalDate());
+        if (comparDato==0){
+            return this.afhTid.toLocalTime().compareTo(ord.afhTid.toLocalTime());
+        }
+        return comparDato;
+    } //end method compareTo
+
 
     //Constructor som tager imod afhentningstidspunkt som LocalDateTime objekt
     //til brug ved filindlæsning
