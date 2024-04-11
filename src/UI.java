@@ -50,6 +50,7 @@ public class UI {
                 hovedMenu();
                 break;
             case 4: //Marker ordre betalt og arkiver den
+                faerdigOrdre(Main.brugerInput);
                 System.out.println("case 4");
                 hovedMenu();
                 break;
@@ -119,6 +120,33 @@ public class UI {
         FilBehandling.gemOrdre(Main.ordrer);
 
     }//end of tilfoejordre method
+
+    public static void faerdigOrdre(Scanner scan) throws FileNotFoundException {
+        Ordre[] ordres = FilBehandling.hentOrdrer(); //læser ordrene fra filen
+        System.out.println("Hvor mange ordrer vil du slette?");
+        int Nb = scan.nextInt();
+
+        int antalSlette = 1;
+
+        while (antalSlette <= Nb) {
+
+            System.out.println("hvad er ordre ID af den order du vil markere som færdiggjort?");
+            int idSlette = scan.nextInt(); //læser ID -fra ekspedienten- af det ordre han vil slette
+
+            int index = findOrdreIndex(ordres, idSlette);//metode der finder ordret i arrayet
+            antalSlette ++;
+        }//end whileloopen
+
+    } // end of faerdigOrdre()
+        public static int findOrdreIndex(Ordre[] ordres, int idSlette){
+            for (int i=0; i<ordres.length; i++){
+                if (ordres[i].getOrdreNr()==idSlette){
+                    return i;
+                }
+            }
+            return -1;
+        } // end of findOrdreIndex
+
 
 }//end of class
 

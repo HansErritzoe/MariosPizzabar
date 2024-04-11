@@ -24,6 +24,10 @@ public class Ordre implements Comparable<Ordre>{
         return comparDato;
     } //end method compareTo
 
+    public  int getOrdreNr(){
+        return this.ordreNr;
+    }
+
 
     //Constructor som tager imod afhentningstidspunkt som LocalDateTime objekt
     //til brug ved filindlæsning
