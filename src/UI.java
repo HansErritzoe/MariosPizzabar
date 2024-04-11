@@ -50,7 +50,7 @@ public class UI {
                 hovedMenu();
                 break;
             case 4: //Marker ordre betalt og arkiver den
-                faerdigOrdre(Main.brugerInput);
+                faerdigOrdre(Main.brugerInput, Main.ordrer);
                 System.out.println("case 4");
                 hovedMenu();
                 break;
@@ -121,23 +121,37 @@ public class UI {
 
     }//end of tilfoejordre method
 
-    public static void faerdigOrdre(Scanner scan) throws FileNotFoundException {
-        Ordre[] ordres = FilBehandling.hentOrdrer(); //læser ordrene fra filen
+    public static void faerdigOrdre(Scanner scan, Ordre[] ordres) throws FileNotFoundException {
+        ordres = FilBehandling.hentOrdrer(); //læser ordrene fra filen
         System.out.println("Hvor mange ordrer vil du slette?");
         int Nb = scan.nextInt();
 
         int antalSlette = 1;
 
+        PrintStream out = new PrintStream(new FileOutputStream("src/færdigeOrdre.txt", true));
         while (antalSlette <= Nb) {
 
-            System.out.println("hvad er ordre ID af den order du vil markere som færdiggjort?");
+            System.out.println("hvad er ID af den order du vil markere som færdiggjort?");
             int idSlette = scan.nextInt(); //læser ID -fra ekspedienten- af det ordre han vil slette
 
-            int index = findOrdreIndex(ordres, idSlette);//metode der finder ordret i arrayet
+            int index = findOrdreIndex(ordres, idSlette);//metode der finder ordret der skal slettes i arrayet
+            System.out.println(ordres[index]); //print den for at sikre at det fungerer
+            out.println(ordres[index]); //skriv ordret i færdigeOrdre
+
+            Ordre[] nytArray = new Ordre[ordres.length - 1];//create a new array that has the same objects minus the deleted
+            for (int i=0; i<index; i++){
+                nytArray[i]=ordres[i];
+            }
+            for(int i=index; i<ordres.length - 1; i++){
+                nytArray[i]=ordres[i+1];
+            }
+            ordres=nytArray;
             antalSlette ++;
         }//end whileloopen
+        out.close();
 
     } // end of faerdigOrdre()
+
         public static int findOrdreIndex(Ordre[] ordres, int idSlette){
             for (int i=0; i<ordres.length; i++){
                 if (ordres[i].getOrdreNr()==idSlette){
