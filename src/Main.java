@@ -5,7 +5,7 @@ public class Main {
 
     //henter nuværende ordrer og færdige ordrer når programmet starter op fra filer
     public static Ordre[] ordrer = FilBehandling.hentOrdrer(); //to be done
-    //public static Ordre[] færdigeOrdrer = FilBehandling.hentFærdigeOrdrer(); //to be done
+    public static Ordre[] færdigeOrdrer = FilBehandling.hentFærdigeOrdrer();
 
     //scanner til genbrug i hele koden
     public static final Scanner brugerInput = new Scanner(System.in);

@@ -118,6 +118,54 @@ public class FilBehandling {
         return 0;
     }
 
+    //metode der læser færdige ordrer fra færdigeOrdrer.txt file
+    public static Ordre [] hentFærdigeOrdrer() throws FileNotFoundException{
+        try{
+        Scanner filescan = new Scanner(new File("src/færdigeOrdre.txt"));
+        int nbLine= 0;
+        while (filescan.hasNextLine()){
+            nbLine++;
+        }
+        filescan.close();
+            Ordre [] færdigeOrdre = new Ordre[nbLine];
+
+            int ordreTæller=0;
+        while(filescan.hasNextLine()) {
+            String line = filescan.nextLine();
+            Scanner linescan = new Scanner(line);
+
+            int pizzaNr=linescan.nextInt();
+
+            String tid=linescan.next();
+            LocalDateTime aftid = Ordre.localDateTimeFraString(tid);
+
+            double pris= linescan.nextDouble();
+
+            int antalPizzaer = tælPizzaPålinje(line);
+
+            Pizza[] pizzaArray = new Pizza[antalPizzaer];
+            int nbPizza = 0;
+            while(linescan.hasNext()){
+                String pizzaNavn = linescan.next();
+                Pizza nyPizza = new Pizza(pizzaNavn);
+                pizzaArray[nbPizza] = nyPizza;
+                nbPizza++;
+            }//end while
+            Ordre nyOrdre = new Ordre(pizzaNr,pizzaArray,aftid);
+            færdigeOrdre[ordreTæller] = nyOrdre;
+            ordreTæller++;
+        }//end while filescan
+
+        return færdigeOrdre;
+
+        } catch (FileNotFoundException e){
+            //throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
+        }
+
+    }//end hentfærdigeOrdre
+
 }
 
 
