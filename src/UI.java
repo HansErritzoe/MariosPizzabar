@@ -14,7 +14,6 @@ public class UI {
         System.out.println("  tast 1: Se Menu-kort                         ");
         System.out.println("  tast 2: Se nuværende ordrer                  ");
         System.out.println("  tast 3: Tilføj ny ordre                      ");
-        //System.out.println("  tast 4: Slet ordre                         ");
         System.out.println("  tast 4: Marker ordre betalt og arkiver den   ");
         System.out.println("  tast 5: Se omsætning                         ");
         System.out.println("  tast 6: Se statsitik                         ");
@@ -60,6 +59,7 @@ public class UI {
                 break;
             case 6: //se statistik
                 System.out.println("case 6");
+                Statistik.mestSolgtePizza(Main.færdigeOrdrer);
                 hovedMenu();
                 break;
             case 7:
@@ -73,6 +73,12 @@ public class UI {
     public static void seOrdrer(){
         Ordre[] ordrer = FilBehandling.hentOrdrer();
         Arrays.sort(ordrer);
+        for (Ordre ordre : ordrer){
+            System.out.println(ordre.toString());
+        }
+    }
+    public static void testDone(){
+        Ordre[] ordrer = FilBehandling.hentFaerdigeOrdrer();
         for (Ordre ordre : ordrer){
             System.out.println(ordre.toString());
         }

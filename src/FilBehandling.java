@@ -1,5 +1,6 @@
 import java.io.*;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.lang.Math.*;
@@ -8,12 +9,12 @@ public class FilBehandling {
 
     //metode til at gemme alle ordre i et Ordre[] til "Ordre.txt" filen
     //bruges når der er foretaget ændringer i Ordrer[] i main
-    public static void gemOrdre(Ordre[] ordreArray){
+    public static void gemOrdre(Ordre[] ordreArray) {
         String filNavn = "src/Ordre.txt";
         try {
             PrintStream output = new PrintStream(filNavn);
-            for(int i = 0; i < ordreArray.length; i++) {
-                output.print(ordreArray[i].toString()+"\n");
+            for (int i = 0; i < ordreArray.length; i++) {
+                output.print(ordreArray[i].toString() + "\n");
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -22,13 +23,13 @@ public class FilBehandling {
 
     //metode til at returnere Ordre[] fra Ordre.txt
     //køres ved program start fra main
-    public static Ordre[] hentOrdrer(){
+    public static Ordre[] hentOrdrer() {
         String filNavn = "src/Ordre.txt";
         try {
             Ordre[] nytOrdreArray = new Ordre[tælLinjerIFil(filNavn)];
             Scanner filLæser = new Scanner(new File(filNavn));
             int ordreTæller = 0;
-            while(filLæser.hasNextLine()){
+            while (filLæser.hasNextLine()) {
                 String linje = filLæser.nextLine();
                 Scanner linjeLæser = new Scanner(linje);
                 //useLocale US så den ikke klager over punktum i doubles
@@ -42,18 +43,18 @@ public class FilBehandling {
                 int antalPizzaer = tælPizzaPålinje(linje);
                 Pizza[] pizzaArray = new Pizza[antalPizzaer];
                 int pizzaTæller = 0;
-                while(linjeLæser.hasNext()){
+                while (linjeLæser.hasNext()) {
                     String pizzaNavn = linjeLæser.next();
                     Pizza nyPizza = new Pizza(pizzaNavn);
                     pizzaArray[pizzaTæller] = nyPizza;
                     pizzaTæller++;
                 }
-                Ordre nyOrdre = new Ordre(id,pizzaArray,afhTid);
+                Ordre nyOrdre = new Ordre(id, pizzaArray, afhTid);
                 nytOrdreArray[ordreTæller] = nyOrdre;
                 ordreTæller++;
             }
             return nytOrdreArray;
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new RuntimeException();
 
@@ -62,15 +63,15 @@ public class FilBehandling {
 
     //Metode der tæller hvor mange pizzaer er på en linje
     //bruges til at skabe korrekt Pizza[] størrelse ved filIndlæsning
-    public static int tælPizzaPålinje(String linje){
+    public static int tælPizzaPålinje(String linje) {
         Scanner linjePizzaTæller = new Scanner(linje);
         int pizzaTæller = 0;
-        while(linjePizzaTæller.hasNext()){
+        while (linjePizzaTæller.hasNext()) {
             linjePizzaTæller.next();
             pizzaTæller++;
         }
         //-3 fordi den først scanner ID, Tidspunkt og pris.
-        return pizzaTæller-3;
+        return pizzaTæller - 3;
     }
 
     //tæller hvor mange linjer er i en fil, så vi ved hvor stort et Ordre[] array vi skal lave når vi henter fra fil
@@ -82,7 +83,7 @@ public class FilBehandling {
                 scanner.nextLine();
                 linjer++;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             throw new FileNotFoundException();
         }
@@ -90,7 +91,7 @@ public class FilBehandling {
     }
 
     //returnerer den næste ubrugte ordre ID ved at scanne filerne for hvad er max ID brugt so far
-    public static int getNewID(){
+    public static int getNewID() {
         try {
             String filNavn = "src/Ordre.txt";
             String filNavn2 = "src/færdigeOrdre.txt";
@@ -99,73 +100,64 @@ public class FilBehandling {
             int ordreMax = 0;
             int færdigeOrdreMax = 0;
             //scanner Ordre.txt for max ID
-            while(ordreScanner.hasNextLine()){
+            while (ordreScanner.hasNextLine()) {
                 int nyværdi = ordreScanner.nextInt();
                 ordreScanner.nextLine();
-                ordreMax = Math.max(nyværdi,ordreMax);
+                ordreMax = Math.max(nyværdi, ordreMax);
             }
             //scanner færdigeOrdre.txt for max ID
-            while(færdigeOrdreScanner.hasNextLine()){
+            while (færdigeOrdreScanner.hasNextLine()) {
                 int nyværdi = færdigeOrdreScanner.nextInt();
                 færdigeOrdreScanner.nextLine();
-                færdigeOrdreMax = Math.max(nyværdi,færdigeOrdreMax);
+                færdigeOrdreMax = Math.max(nyværdi, færdigeOrdreMax);
             }
             //returnerer max INT+1 for de 2 filer
-            return Math.max(ordreMax,færdigeOrdreMax)+1;
-        }catch(Exception e){
+            return Math.max(ordreMax, færdigeOrdreMax) + 1;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
 
     //metode der læser færdige ordrer fra færdigeOrdrer.txt file
-    public static Ordre [] hentFærdigeOrdrer() throws FileNotFoundException{
-        try{
-        Scanner filescan = new Scanner(new File("src/færdigeOrdre.txt"));
-        int nbLine= 0;
-        while (filescan.hasNextLine()){
-            nbLine++;
-        }
-        filescan.close();
-            Ordre [] færdigeOrdre = new Ordre[nbLine];
+    public static Ordre[] hentFaerdigeOrdrer() {
+        String filNavn = "src/færdigeOrdre.txt";
+        try {
+            Ordre[] nytOrdreArray = new Ordre[tælLinjerIFil(filNavn)];
+            Scanner filLæser = new Scanner(new File(filNavn));
+            int ordreTæller = 0;
+            while (filLæser.hasNextLine()) {
+                String linje = filLæser.nextLine();
+                Scanner linjeLæser = new Scanner(linje);
+                //useLocale US så den ikke klager over punktum i doubles
+                linjeLæser.useLocale(Locale.US);
+                int id = linjeLæser.nextInt();
+                String tidspunkt = linjeLæser.next();
+                //konverterer til LocalDateTime fra String
+                LocalDateTime afhTid = Ordre.localDateTimeFraString(tidspunkt);
+                double totalPris = linjeLæser.nextDouble();
+                //kalder metode til at tælle antal pizzaer på linjen
+                int antalPizzaer = tælPizzaPålinje(linje);
+                Pizza[] pizzaArray = new Pizza[antalPizzaer];
+                int pizzaTæller = 0;
+                while (linjeLæser.hasNext()) {
+                    String pizzaNavn = linjeLæser.next();
+                    Pizza nyPizza = new Pizza(pizzaNavn);
+                    pizzaArray[pizzaTæller] = nyPizza;
+                    pizzaTæller++;
+                }
+                Ordre nyOrdre = new Ordre(id, pizzaArray, afhTid);
+                nytOrdreArray[ordreTæller] = nyOrdre;
+                ordreTæller++;
+            }
 
-            int ordreTæller=0;
-        while(filescan.hasNextLine()) {
-            String line = filescan.nextLine();
-            Scanner linescan = new Scanner(line);
-
-            int pizzaNr=linescan.nextInt();
-
-            String tid=linescan.next();
-            LocalDateTime aftid = Ordre.localDateTimeFraString(tid);
-
-            double pris= linescan.nextDouble();
-
-            int antalPizzaer = tælPizzaPålinje(line);
-
-            Pizza[] pizzaArray = new Pizza[antalPizzaer];
-            int nbPizza = 0;
-            while(linescan.hasNext()){
-                String pizzaNavn = linescan.next();
-                Pizza nyPizza = new Pizza(pizzaNavn);
-                pizzaArray[nbPizza] = nyPizza;
-                nbPizza++;
-            }//end while
-            Ordre nyOrdre = new Ordre(pizzaNr,pizzaArray,aftid);
-            færdigeOrdre[ordreTæller] = nyOrdre;
-            ordreTæller++;
-        }//end while filescan
-
-        return færdigeOrdre;
-
-        } catch (FileNotFoundException e){
-            //throw new RuntimeException(e);
+            return nytOrdreArray;
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return null;
-        }
+            throw new RuntimeException();
 
-    }//end hentfærdigeOrdre
+        }
+        }//end hentfærdigeOrdre
 
 }
-
 
