@@ -54,6 +54,7 @@ public class UI {
                 break;
             case 5: //se omsætning
                 System.out.println("case 5");
+                Omsaetning.findOmsætning(Main.færdigeOrdrer);
                 hovedMenu();
                 break;
             case 6: //se statistik
