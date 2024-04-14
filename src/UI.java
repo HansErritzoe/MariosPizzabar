@@ -53,7 +53,7 @@ public class UI {
                 hovedMenu();
                 break;
             case 5: //se omsætning
-                System.out.println("case 5");
+                //System.out.println("case 5");
                 Omsaetning.findOmsætning(Main.færdigeOrdrer);
                 hovedMenu();
                 break;
