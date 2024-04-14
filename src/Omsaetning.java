@@ -58,6 +58,7 @@ public class Omsaetning {
         System.out.println("===============================================");
         System.out.println("Din totale omsætning er: " + omsætningSamler + "kr.");
         System.out.println();
+        omsætning = new double[0];
     }
 }
 
