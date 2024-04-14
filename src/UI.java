@@ -126,7 +126,7 @@ public class UI {
     }//end of tilfoejordre method
 
     public static void faerdigOrdre(Scanner scan, Ordre[] ordres) throws FileNotFoundException {
-        ordres = FilBehandling.hentOrdrer(); //læser ordrene fra filen
+        ordres = FilBehandling.hentOrdrer(); //læser ordrene fra filen og gemmer dem i ordre-arrayet
         System.out.println("Hvor mange ordrer vil du slette?");
         int Nb = scan.nextInt();
 
@@ -154,7 +154,7 @@ public class UI {
         }//end whileloopen
         out.close();
 
-        fjernFærdigeOrdrer("Ordre.txt", "færdigeOrdre.txt");
+        FilBehandling.gemOrdre(ordres);
 
     } // end of faerdigOrdre()
 
@@ -166,53 +166,6 @@ public class UI {
             }
             return -1;
         } // end of findOrdreIndex
-
-
-    //metode der skal læse ordre og færdige ordre til 2 array, lav et nyt array med de resterende ordre, og så overskrive dem i filen ordre.txt
-    public static void fjernFærdigeOrdrer(String Ordre, String færdigeOrdre){
-        Ordre [] ordrer =FilBehandling.hentOrdrer();
-        Ordre [] f_Ordre =FilBehandling.hentFaerdigeOrdrer();
-
-        int nbRestOrdre = 0; //tæller af resterende ordrer
-
-        //nu skal der kører en loop i ordrer arrayet, og for hvert ordrer skal der køres en ny loop i f_Ordre arrayet der kigger om ordret findes som færdig, hvis nej(hvis ordret ikke er færdig) inkrementeres nbRestOrdre
-            for (Ordre ordre:ordrer) {
-                boolean existInFærdig = false;
-                for (Ordre fOrdre : f_Ordre) {
-                    if (ordre.equals(f_Ordre)) {
-                        existInFærdig = true;
-                        break;
-                    }//end If
-                }//end for
-
-                if (!existInFærdig) { // tæller antallet af resterende ordrer: if(existInFærdig==false): order is not finished
-                    nbRestOrdre++;
-                } //end If
-            }// end for
-
-        //opretter et array til de resterende ordrer:
-        Ordre [] resterendeOrdre = new Ordre[nbRestOrdre];
-        int index = 0; //index til resterendeOrdre - arrayet
-
-        for (Ordre ordre:ordrer) {
-            boolean existInFærdig = false;
-            for (Ordre fOrdre : f_Ordre) {
-                if (ordre.equals(f_Ordre)) {
-                    existInFærdig = true;
-                    break;
-                }//end If
-            }//end for
-
-            if (!existInFærdig) { // tæller antallet af resterende ordrer: if(existInFærdig==false): order is not finished
-                resterendeOrdre[index]=ordre;
-                index++;
-            } //end If
-        }// end for
-
-        // Overskriv Ordre.txt med resterendeOrdre
-        FilBehandling.gemOrdre(resterendeOrdre);
-
-    }//fjernFærdigeOrdrer metoden
 
 
 }//end of class

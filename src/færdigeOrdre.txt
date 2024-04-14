@@ -1,11 +1,5 @@
-13 04/11-2024-11:00 242.0 Cacciatore Carbona Silvia Toronfo 
-12 04/11-2024-12:45 126.0 Victoria Dennis 
-6 06/03-2023-16:16 179.0 Silvia Le-Blissola Vesuvio Amarikaner 
 10 04/10-2024-15:34 246.0 Carbona Dennis Bertil Victoria 
-13 04/11-2024-11:00 242.0 Cacciatore Carbona Silvia Toronfo
-6 06/03-2023-16:16 179.0 Silvia Le-Blissola Vesuvio Amarikaner 
-6 06/03-2023-16:16 179.0 Silvia Le-Blissola Vesuvio Amarikaner 
-6 06/03-2023-16:16 179.0 Silvia Le-Blissola Vesuvio Amarikaner 
-5 05/03-2023-15:45 183.0 Mafia Toronfo Hawai 
-8 04/10-2024-13:45 53.0 Amerikaner 
-13 04/11-2024-11:00 242.0 Cacciatore Carbona Silvia Toronfo 
+7 04/10-2024-13:45 53.0 Amerikaner 
+17 04/14-2024-19:00 299.0 Vesuvio Carbona Bertil Toronfo Hawai 
+4 05/04-2023-15:30 175.0 Vesuvio Amerikaner Dennis 
+18 04/14-2024-11:20 179.0 Amerikaner Silvia Dennis 

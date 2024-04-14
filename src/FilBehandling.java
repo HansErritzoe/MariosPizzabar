@@ -17,7 +17,7 @@ public class FilBehandling {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-    }
+    }//end method gemOrdre
 
     //metode til at returnere Ordre[] fra Ordre.txt
     //køres ved program start fra main
