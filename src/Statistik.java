@@ -9,31 +9,31 @@ public class Statistik {
         File file = new File("src/pizzaListe.txt");
         Scanner filescan = new Scanner(file);
 
-        while (filescan.hasNextLine()) {
+        while (filescan.hasNextLine()) { // while loop 1
             int count = 0;
-            while (filescan.hasNextLine()) {
+            while (filescan.hasNextLine()) { //while loop 2
                 count++;
                 filescan.nextLine();
-            }
+            } // end of while loop 2
             String[] pizzaNavn = new String[count];
             double[] pizzaPris = new double[count];
 
             File fileloop = new File("src/pizzaListe.txt");
 
             Scanner loopfilescan = new Scanner(fileloop);
-            for (int i = 0; i <= count - 1; i++) {
+            for (int i = 0; i <= count - 1; i++) { // for loop 1
                 loopfilescan.useLocale(Locale.US);
                 String pizzaScan = loopfilescan.next();
                 pizzaNavn[i] = pizzaScan;
                 double prisScan = loopfilescan.nextDouble();
                 pizzaPris[i] = prisScan;
-                for (Ordre pizza : ordre) {
+                for (Ordre pizza : ordre) { // for loop 2
                     if (pizza.toString().contains(pizzaScan)) {
                         navneSamler(pizzaScan);
                     }
-                }
-            }
-        }
+                } // end of for loop 2
+            } // end of for loop 1
+        } //end of while loop 1
         pointTæller();
     }
 
